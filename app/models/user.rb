@@ -2,6 +2,8 @@ class User < ActiveRecord::Base
   include Authentication
   rolify
 
+  has_many :families
+
   validates :uid,
             :provider,
             :first_name,

@@ -1,4 +1,5 @@
 class IdentitiesController < ApplicationController
+  skip_before_action :authenticate!, only: [:new]
   before_action :find_identity
 
   def show

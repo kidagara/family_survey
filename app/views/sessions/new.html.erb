@@ -1,17 +1,26 @@
-<% content_for :title, "User Account Required" %>
-
-<!-- All users should be created via terminal. No new users are to be created. All users are just for looking at reports. -->
-<section class="panel radius">
-  <div class="row">
-    <div class="columns">
-      <h2>Sign in</h2>
-      <%= form_tag "/auth/identity/callback" do %>
-        <%= label_tag :auth_key, "Email" %>
+<div class="row">
+  <h1>Wavetronix Family Survey</h1>
+  <p>In preparation for the upcoming family week excursion, please take a moment to fill out the following survey. To access the survey, click on the button below to sign up your family. The survey will be used to determine how many people/families are planning on attending so we know who to expect, what to plan for and what to bring.</p>
+  <p>It is critical that you fill out this survey completely and correctly by <b>*insert date.*</b> If you do not complete this survey by <b>*Date*</b> you will not be able to attend.</p>
+  <p>Once again, fill in this survey by <b>*date*</b> so we can plan for the upcoming family excursion. Thank you.</p>
+  <hr/>
+  <div class="medium-6 columns">
+    <h3>Take the survey</h3>
+    <p>If this is your first time to this page, sign up your family by clicking the button below and filling out the survey</p>
+    <%= button_to "Register your family", new_identity_path, class: "button radius", method: :get %>
+  </div>
+  <div class="medium-6 columns">
+    <h3>Edit your family</h3>
+    <p>If you have already taken the survey and need to make some changes to your family, click the button below. Please note all edits are final on *random date*</p>
+    <%= form_tag "/auth/identity/callback" do %>
+        <%= label_tag :auth_key, "Wavetronix Email" %>
         <%= email_field_tag :auth_key %>
         <%= label_tag :password %>
         <%= password_field_tag :password %>
-        <%= submit_tag "Login", class: "button radius" %>
+        <%= submit_tag "Sign In", class: "button radius" %>
       <% end %>
-    </div>
   </div>
-</section>
+</div>
+
+
+<!-- Need to make these links go to the right place -->

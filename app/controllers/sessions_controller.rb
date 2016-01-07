@@ -1,4 +1,5 @@
 class SessionsController < ApplicationController
+  skip_before_action :authenticate!, only: [:new, :create]
 
   def new
   end
@@ -11,7 +12,7 @@ class SessionsController < ApplicationController
     }
     uri = session[:referer]
     session[:referer] = nil
-    redirect_path = root_path
+    redirect_path = new_family_path
     redirect_path = uri if uri
     redirect_to redirect_path
   end

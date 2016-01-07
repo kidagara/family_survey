@@ -1,8 +1,6 @@
 class Identity < OmniAuth::Identity::Models::ActiveRecord
   validates :first_name,
-            :last_name,
-            :location,
-            :description, presence: true
+            :last_name, presence: true
   validates :password,
             :password_confirmation, presence: true, on: :create
   validates :password, presence: true, on: :create

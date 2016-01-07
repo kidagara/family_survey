@@ -12,6 +12,9 @@ class FamiliesController < ApplicationController
   def edit
   end
 
+  def show
+  end
+
   def create
     @family = Family.new(family_params)
     if @family.save

@@ -1,12 +1,7 @@
-
-
-<!-- ******************
-This page isn't needed. A new identity or user should never be created via the web.
-***********************
-
-
-<% content_for :title, "New Account" %>
-<h1>New Account</h1>
+<% content_for :title, "Register your family" %>
+<h1>Step One</h1>
+<h2>Employee Information</h2>
+<p>Please enter the information below for you, the employee.</p>
 
 <%= form_tag "/auth/identity/register" do %>
   <% if @identity && @identity.errors.any? %>
@@ -20,20 +15,18 @@ This page isn't needed. A new identity or user should never be created via the w
     </div>
   <% end %>
 
-  <div class="row">
-    <div class="medium-6 columns">
-      <%= label_tag :first_name %>
-      <%= text_field_tag :first_name, @identity.try(:first_name) %>
-    </div>
-    <div class="medium-6 columns">
-      <%= label_tag :last_name %>
-      <%= text_field_tag :last_name, @identity.try(:last_name) %>
-    </div>
-  </div>
 
-  <%= label_tag :email %>
+  <%= label_tag "Your first name" %>
+  <%= text_field_tag :first_name, @identity.try(:first_name) %>
+
+  <%= label_tag "Your last name" %>
+  <%= text_field_tag :last_name, @identity.try(:last_name) %>
+
+
+  <%= label_tag "Your work email" %>
   <%= email_field_tag :email, @identity.try(:email) %>
 
+  <p>Please enter in a password so you can edit your family information later if needed</p>
   <div class="row">
     <div class="medium-6 columns">
       <%= label_tag :password %>
@@ -45,6 +38,5 @@ This page isn't needed. A new identity or user should never be created via the w
     </div>
   </div>
 
-  <%= submit_tag "Create a new account", class: "button radius" %>
+  <%= submit_tag "Continue to Step Two", class: "button radius" %>
 <% end %>
- -->

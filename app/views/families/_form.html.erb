@@ -7,12 +7,33 @@
       <% end %>
     </ul>
   <% end if @family.errors.any? %>
-  <%= f.label :name %>
-  <%= f.text_field :name %>
+  <div class="medium-6 columns">
+    <%= f.label "Your first name" %>
+    <%= f.text_field :employee_relative, value: current_user.first_name %>
+  </div>
+  <div class="medium-6 columns">
+    <%= f.label "Your spouse's first name" %>
+    <%= f.text_field :partner_first_name %>
+  </div>
+  <div class="columns">
+    <%= f.label :household_name %>
+    <%= f.text_field :household_name, value: current_user.last_name %>
+    <p>For each field below, please type in how many children you have in the age bracket that are planning to attend. Please note that this is the age they will be in September of this year.</p>
+  <%= f.label "Children under 2 years old" %>
+  <%= f.number_field :decendents_under2, :placeholder => "0" %>
+  <%= f.label "Children 2-5 years old" %>
+  <%= f.number_field :decendents_2to5, :placeholder => "0" %>
+  <%= f.label "Children 6-12 years old" %>
+  <%= f.number_field :decendents_6to12, :placeholder => "0" %>
+  <%= f.label "Children 13-17 years old" %>
+  <%= f.number_field :decendents_13to17, :placeholder => "0" %>
+  <%= f.label "Children 18 years old (that currently live with you)" %>
+  <%= f.number_field :decendents_over18, :placeholder => "0" %>
 
+  <p>If you have a child that has their own family (basically if they don't live at home), you will be able to add them in step three.</p>
   <div class="row">
     <div class="medium-6 columns">
-      <%= f.submit class: 'button radius expand' %>
+      <%= f.submit "Add your family", class: 'button radius expand' %>
     </div>
   </div>
 <% end %>

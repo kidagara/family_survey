@@ -11,21 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160107184736) do
+ActiveRecord::Schema.define(version: 20160107195325) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "families", force: :cascade do |t|
-    t.string   "last_name"
-    t.string   "employee_first_name"
-    t.string   "employee_email"
-    t.string   "partner_first_name"
-    t.integer  "decendents_under2"
-    t.integer  "decendents_2to5"
-    t.integer  "decendents_6to12"
-    t.integer  "decendents_13to17"
-    t.integer  "decendents_over18"
+    t.integer  "user_id"
+    t.string   "family_name"
+    t.integer  "members_under2"
+    t.integer  "members_2to5"
+    t.integer  "members_6to12"
+    t.integer  "members_13to17"
+    t.integer  "members_over18"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

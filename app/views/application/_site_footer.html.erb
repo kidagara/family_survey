@@ -8,7 +8,6 @@
     </div>
     <div class="medium-5 columns end hide-for-small">
       <ul class="inline-list right">
-      <!-- Signing in and Signing out will ONLY be used by Admins (i.e. Holly). A user is only there to see reports. -->
         <% if current_user %>
           <li>
             <%= link_to edit_identity_path(current_user.uid), title: "Edit #{current_user.name}" do %>
@@ -16,8 +15,6 @@
           <% end %>
           </li>
           <li><%= link_to content_tag(:span, nil, class: "fa fa-sign-out"), sign_out_path, title: "Sign out" %></li>
-        <% else %>
-          <li><%= link_to content_tag(:span, nil, class: "fa fa-sign-in"), sign_in_path, title: "Sign in" %></li>
         <% end %>
       </ul>
     </div>
