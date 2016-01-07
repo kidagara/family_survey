@@ -1,0 +1,17 @@
+<% content_for :title, "User Account Required" %>
+
+<!-- All users should be created via terminal. No new users are to be created. All users are just for looking at reports. -->
+<section class="panel radius">
+  <div class="row">
+    <div class="columns">
+      <h2>Sign in</h2>
+      <%= form_tag "/auth/identity/callback" do %>
+        <%= label_tag :auth_key, "Email" %>
+        <%= email_field_tag :auth_key %>
+        <%= label_tag :password %>
+        <%= password_field_tag :password %>
+        <%= submit_tag "Login", class: "button radius" %>
+      <% end %>
+    </div>
+  </div>
+</section>

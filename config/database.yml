@@ -1,0 +1,18 @@
+<% branch = Git.open(".").current_branch %>
+
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+
+development:
+  <<: *default
+  database: www_development-<%= branch %>
+
+test:
+  <<: *default
+  database: www_test-<%= branch %>
+
+production:
+  <<: *default
+  database: www_production

@@ -1,0 +1,30 @@
+<% content_for :title, @identity.first_name %>
+
+<header>
+  <h1>
+    <%= @identity.first_name %>
+  </h1>
+</header>
+
+<%= form_for @identity do |f| %>
+  <% if @identity.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize @identity.errors.count, "error" %> prohibited this event from being saved:</h2>
+    <ul>
+    <% @identity.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+  <% end %>
+  <%= f.label :first_name %>
+  <%= f.text_field :first_name %>
+
+  <%= f.label :last_name %>
+  <%= f.text_field :last_name %>
+
+  <%= f.label :email %>
+  <%= f.email_field :email %>
+
+  <%= f.submit :class => 'button default' %>
+<% end %>

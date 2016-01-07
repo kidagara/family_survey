@@ -1,0 +1,40 @@
+<header class="site-header">
+  <nav class="tab-bar">
+    <% if current_user %>
+      <section class="left-small">
+        <%= link_to content_tag(:span), nil, class: 'left-off-canvas-toggle menu-icon' %>
+      </section>
+    <% end %>
+    <section class="middle tab-bar-section">
+      <h1><%= link_to image_tag('nav_logo.svg', alt: 'Wavetronix'), root_path, class: 'top-bar-site-icon' %></h1>
+    </section>
+  </nav>
+
+  <%= render "flash" %>
+
+  <% if current_user %>
+    <aside class="left-off-canvas-menu">
+      <ul class="off-canvas-list">
+        <li><label>Wavetronix Family Survey</label></li>
+          <li>
+            <%= link_to nil do %>
+              <span class="fa fa-fw fa-cube"></span>
+              Reports
+            <% end %>
+          </li>
+          <li>
+            <%= link_to nil do %>
+              <span class="fa fa-fw fa-cube"></span>
+              Families
+            <% end %>
+          </li>
+        <li class="hide-for-medium-up">
+          <%= link_to sign_out_path do %>
+            <span class="fa fa-fw fa-sign-out"></span>
+            Sign out
+          <% end %>
+        </li>
+      </ul>
+    </aside>
+  <% end %>
+</header>

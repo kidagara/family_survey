@@ -1,0 +1,13 @@
+<% content_for :title, 'Home Page' %>
+
+<div class="row">
+  <h1>Wavetronix Family Survey</h1>
+  <h3>Take the survey</h3>
+  <p>If this is your first time to this page, sign up your family by clicking the button below and filling out the survey</p>
+  <%= button_to "Sign up your family", new_family_path, class: "button radius", method: :get %>
+  <hr/>
+  <h3>Editing your family</h3>
+  <p>If you have already taken the survey and need to make some changes to your family, click the button below. Please note all edits are final on January 31st</p>
+  <!-- This will be a link to edit the family page -->
+  <button class="radius">Edit Family</button>
+</div>

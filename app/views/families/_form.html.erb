@@ -1,0 +1,18 @@
+<%= form_for @family do |f| %>
+  <%= content_tag :div, class: 'alert-box radius alert' do %>
+    <h4><%= pluralize @family.errors.count, 'error' %> kept this form from submitting:</h4>
+    <ul>
+      <% @family.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  <% end if @family.errors.any? %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+
+  <div class="row">
+    <div class="medium-6 columns">
+      <%= f.submit class: 'button radius expand' %>
+    </div>
+  </div>
+<% end %>

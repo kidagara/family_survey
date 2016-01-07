@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="<%= locale %>">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="apple-itunes-app" content="app-id=840962745">
+
+    <title><%= full_title yield(:title) %></title>
+
+    <%= stylesheet_link_tag    "application" %>
+    <%= javascript_include_tag "vendor/modernizr" %>
+    <%= javascript_include_tag "application" %>
+    <%= csrf_meta_tags %>
+  </head>
+
+  <body>
+    <div class="off-canvas-wrap" data-offcanvas>
+      <div class="inner-wrap">
+        <%= render "site_header" %>
+        <main class="row">
+          <div class="columns">
+            <%= yield %>
+          </div>
+        </main>
+        <%= render "site_footer" %>
+        <div class="row">
+          <div class="columns">
+            <%= content_tag :div, class: "panel radius" do %>
+              <%= debug params %>
+            <% end if Rails.env.in? %w[development staging] %>
+          </div>
+        </div>
+        <a class="exit-off-canvas"></a>
+      </div>
+    </div>
+  </body>
+</html>
