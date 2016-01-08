@@ -1,0 +1,43 @@
+
+<!-- need to add policy. If current user doesn't have role of admin, then the scope is just the current users personal family/families. If the current user is an admin, then all families are displayed alphabetically by last name -->
+
+<div class="row">
+  <h1>Families of <%= current_user.name %></h1>
+  <% @families.each do |family| %>
+    <div class="row panel family-panel">
+      <div class="medium-8 columns">
+        <h3><%= family.family_name %> Family</h3>
+        <p>On August 2nd, the <%= family.family_name %> family will have a total of <%= pluralize(family.total_family_members, "member") %>.</p>
+        <% if family.members_under2 && family.members_under2 > 0 %>
+          Family members 2 and under = <%= family.members_under2 %><br/>
+        <% end %>
+        <% if family.members_2to5 && family.members_2to5 > 0 %>
+          Family members 2 to 5 = <%= family.members_2to5 %><br/>
+        <% end %>
+        <% if family.members_6to12 && family.members_6to12 > 0 %>
+          Family members 6 to 12 = <%= family.members_6to12 %><br/>
+        <% end %>
+        <% if family.members_13to17 && family.members_13to17 > 0 %>
+          Family members 13 to 17 = <%= family.members_13to17 %><br/>
+        <% end %>
+        <% if family.members_over18 && family.members_over18 > 0 %>
+          Family members 18 and over = <%= family.members_over18 %><br/>
+        <% end %>
+      </div>
+      <div class="medium-4 text-right columns">
+        <%= button_to "Edit the #{family.family_name} family", edit_family_path(family), class: "button radius", method: :get %>
+        <%= button_to "Delete the #{family.family_name} family", family_path(family), class: "button radius alert tiny", data: { confirm: %(Are you sure you wnt to delete the "#{family.family_name}?" This cannot be undone.) }, method: :delete %>
+      </div>
+    </div>
+  <% end %>
+</div>
+<div class="row">
+  <h3>Step Three <small>(optional)</small></h3>
+  <p>If you have decendents that do not live at home and have their own families, please add them by clicking the button below.</p>
+  <%= button_to "Register a new family", new_family_path, class: "button radius", method: :get %>
+</div>
+<hr/>
+<div class="row">
+  <h3>Step Four</h3>
+  <p>If you have completed your family and decendents - Congratulations! You are all done! You can <%= link_to "log out", sign_out_path %>, or edit your family above. Remember all changes must be made by Friday, January 15th.</p>
+</div>

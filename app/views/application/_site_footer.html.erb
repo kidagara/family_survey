@@ -10,9 +10,7 @@
       <ul class="inline-list right">
         <% if current_user %>
           <li>
-            <%= link_to edit_identity_path(current_user.uid), title: "Edit #{current_user.name}" do %>
             <%= current_user.name %>
-          <% end %>
           </li>
           <li><%= link_to content_tag(:span, nil, class: "fa fa-sign-out"), sign_out_path, title: "Sign out" %></li>
         <% end %>

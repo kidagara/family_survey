@@ -2,35 +2,32 @@
   <%= content_tag :div, class: 'alert-box radius alert' do %>
     <h4><%= pluralize @family.errors.count, 'error' %> kept this form from submitting:</h4>
     <ul>
-      <% @family.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+      <% if @family.members_over18.blank? %>
+        <p>There cannot be a household without a person over 18. Please remember to include the heads of household.</p>
+      <% else %>
+        <% @family.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
       <% end %>
     </ul>
   <% end if @family.errors.any? %>
-  <div class="medium-6 columns">
-    <%= f.label "Your first name" %>
-    <%= f.text_field :employee_relative, value: current_user.first_name %>
-  </div>
-  <div class="medium-6 columns">
-    <%= f.label "Your spouse's first name" %>
-    <%= f.text_field :partner_first_name %>
-  </div>
   <div class="columns">
-    <%= f.label :household_name %>
-    <%= f.text_field :household_name, value: current_user.last_name %>
-    <p>For each field below, please type in how many children you have in the age bracket that are planning to attend. Please note that this is the age they will be in September of this year.</p>
-  <%= f.label "Children under 2 years old" %>
-  <%= f.number_field :decendents_under2, :placeholder => "0" %>
-  <%= f.label "Children 2-5 years old" %>
-  <%= f.number_field :decendents_2to5, :placeholder => "0" %>
-  <%= f.label "Children 6-12 years old" %>
-  <%= f.number_field :decendents_6to12, :placeholder => "0" %>
-  <%= f.label "Children 13-17 years old" %>
-  <%= f.number_field :decendents_13to17, :placeholder => "0" %>
-  <%= f.label "Children 18 years old (that currently live with you)" %>
-  <%= f.number_field :decendents_over18, :placeholder => "0" %>
+    <%= f.label :family_name %>
+    <%= f.text_field :family_name %>
+    <p>For each field below, please type in how many in the family are in the age bracket that are planning to attend. Please note that this is the age they will be by August 2nd of this year. Please include the head of household and their spouse as well!</p>
+    <%= f.label "Children under 2 years old" %>
+    <%= f.number_field :members_under2, :placeholder => "0" %>
+    <%= f.label "Children 2-5 years old" %>
+    <%= f.number_field :members_2to5, :placeholder => "0" %>
+    <%= f.label "Children 6-12 years old" %>
+    <%= f.number_field :members_6to12, :placeholder => "0" %>
+    <%= f.label "Children 13-17 years old" %>
+    <%= f.number_field :members_13to17, :placeholder => "0" %>
+    <%= f.label "Family members 18 years or older" %>
+    <%= f.number_field :members_over18, :placeholder => "0" %>
 
-  <p>If you have a child that has their own family (basically if they don't live at home), you will be able to add them in step three.</p>
+    <p>To create a another new family (for example, if your children do not live at home and have their own seperate family), you will be given a chance to do so in the next step.</p>
+  </div>
   <div class="row">
     <div class="medium-6 columns">
       <%= f.submit "Add your family", class: 'button radius expand' %>

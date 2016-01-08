@@ -7,6 +7,6 @@ Rails.application.routes.draw do
 
   resources :identities, :users, :families
 
-  root to: "home#index"
+  root to: "families#index"
 
 end

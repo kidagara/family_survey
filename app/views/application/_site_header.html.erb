@@ -1,6 +1,6 @@
 <header class="site-header">
   <nav class="tab-bar">
-    <% if current_user %>
+    <% if current_user && current_user.has_role?(:admin) %>
       <section class="left-small">
         <%= link_to content_tag(:span), nil, class: 'left-off-canvas-toggle menu-icon' %>
       </section>
@@ -12,7 +12,7 @@
 
   <%= render "flash" %>
 
-  <% if current_user %>
+  <% if current_user && current_user.has_role?(:admin) %>
     <aside class="left-off-canvas-menu">
       <ul class="off-canvas-list">
         <li><label>Wavetronix Family Survey</label></li>
