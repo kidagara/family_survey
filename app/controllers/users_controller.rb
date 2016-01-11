@@ -4,15 +4,18 @@ class UsersController < ApplicationController
 
   def index
     @users = User.order("last_name, first_name ASC").all
+    authorize :user
   end
 
   def show
   end
 
   def edit
+    authorize @user
   end
 
   def update
+    authorize @user
     if @user.update(user_params)
       redirect_to users_path, notice: %(Updated "#{@user.name}" successfully.)
     else
@@ -22,6 +25,7 @@ class UsersController < ApplicationController
 
   def destroy
     authorize @user
+    @user.families.destroy_all
     @user.destroy
     redirect_to users_path
   end
