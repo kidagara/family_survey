@@ -12,7 +12,11 @@ class SessionsController < ApplicationController
     }
     uri = session[:referer]
     session[:referer] = nil
-    redirect_path = root_path
+    if current_user.families.count < 1
+      redirect_path = new_family_path
+    else
+      redirect_path = root_path
+    end
     redirect_path = uri if uri
     redirect_to redirect_path
   end
