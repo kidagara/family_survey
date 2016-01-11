@@ -18,7 +18,7 @@ class FamiliesController < ApplicationController
     @family = Family.new(family_params)
     @family.user_id = current_user.id if current_user
     if @family.save
-      redirect_to families_path, notice: %(Updated "#{@family.family_name}" successfully.)
+      redirect_to family_path, notice: %(Updated "#{@family.family_name}" successfully.)
     else
       render :new
     end
