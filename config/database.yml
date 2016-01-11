@@ -7,12 +7,12 @@ default: &default
 
 development:
   <<: *default
-  database: www_development-<%= branch %>
+  database: family_survey_development-<%= branch %>
 
 test:
   <<: *default
-  database: www_test-<%= branch %>
+  database: family_survey_test-<%= branch %>
 
 production:
   <<: *default
-  database: www_production
+  database: family_survey_production
