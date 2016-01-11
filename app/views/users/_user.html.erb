@@ -1,0 +1,12 @@
+<tr>
+  <td>
+    <%= link_to edit_user_path(user), title: %(Edit "#{user.name}") do %>
+      <strong><%= user.name %></strong>
+    <% end %>
+  </td>
+  <td class="hide-for-small"><%= user.email %></td>
+  <td class="text-right"><%= user.families.count %></td>
+  <td class="hide-for-small">
+    <%= link_to 'Delete User', user_path(user), class: 'button tiny radius delete', data: { confirm: %(Are you sure you want to delete "#{user.name}?" This cannot be undone.) }, method: :delete %>
+  </td>
+</tr>

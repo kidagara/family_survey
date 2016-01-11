@@ -43,7 +43,7 @@ class FamiliesController < ApplicationController
     @families ||= current_user.families
   end
 
-    def all_families
+  def all_families
     if current_user.has_role?(:admin)
       @all_families = Family.all
       # but listed in order by user_id user last name

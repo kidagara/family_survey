@@ -6,7 +6,8 @@ class Identity < OmniAuth::Identity::Models::ActiveRecord
   validates :password, presence: true, on: :create
   validates :email, presence: true,
                     uniqueness: { case_sensitive: false },
-                    format: { with: /\A^[-a-z0-9_+\.]+\@([-a-z0-9]+\.)+[a-z0-9]{2,4}$\Z/i }
+                    format: { with: /\b[A-Z0-9._%a-z\-]+@wavetronix\.com\z/,
+                  message: "must be a wavetronix.com account" }
 
   after_destroy :delete_user
 
@@ -26,8 +27,6 @@ class Identity < OmniAuth::Identity::Models::ActiveRecord
     user.first_name = first_name
     user.last_name = last_name
     user.email = email
-    user.location = location
-    user.description = description
     user.save
   end
 

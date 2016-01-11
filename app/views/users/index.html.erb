@@ -1,0 +1,23 @@
+<% content_for :title, "Users" %>
+<h1>Users</h1>
+<p>This is a list of all of the Employees who have currently at least created an account.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Employee</th>
+      <th class="hide-for-small">Email</th>
+      <th>Families Created</th>
+      <th class="hide-for-small">Delete</th>
+    </tr>
+  </thead>
+  <tbody>
+    <%= render @users %>
+  </tbody>
+</table>
+
+
+
+
+
+
