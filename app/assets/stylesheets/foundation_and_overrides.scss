@@ -89,9 +89,9 @@ $column-gutter: rem-calc(20);
 // - - - - - - - - - - - - - - - - - - - - - - - - -
 
 // We use these to define default font stacks
-$font-family-sans-serif: Klavika, "Source Sans Pro", Calibri, sans-serif;
+$font-family-sans-serif: Klavika, "Klavika", "Source Sans Pro", Calibri, sans-serif;
 // $font-family-serif: Georgia, Cambria, "Times New Roman", Times, serif;
-$font-family-monospace: "Source Code Pro", Consolas, "Liberation Mono", Courier, monospace;
+// $font-family-monospace: "Source Code Pro", Consolas, "Liberation Mono", Courier, monospace;
 
 // We use these to define default font weights
 // $font-weight-normal: normal;
@@ -128,7 +128,7 @@ $info-color: #738fe5;
 // We use these to control various global styles
 $body-bg: $white;
 // $body-font-color: $jet;
-// $body-font-family: $font-family-sans-serif;
+$body-font-family: $font-family-sans-serif;
 // $body-font-weight: $font-weight-normal;
 // $body-font-style: normal;
 

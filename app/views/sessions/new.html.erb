@@ -10,7 +10,7 @@
   </div>
   <div class="medium-6 columns">
     <h3>Edit your family</h3>
-    <p>If you have already taken the survey and need to make some changes to your family, click the button below. Please note all edits are final on *random date*</p>
+    <p>If you have already taken the survey and need to make some changes to your family, click the button below. Please note all edits are final on <b>Friday, January 15th</b></p>
     <%= form_tag "/auth/identity/callback" do %>
         <%= label_tag :auth_key, "Wavetronix Email" %>
         <%= email_field_tag :auth_key %>
@@ -20,6 +20,3 @@
       <% end %>
   </div>
 </div>
-
-
-<!-- Need to make these links go to the right place -->
