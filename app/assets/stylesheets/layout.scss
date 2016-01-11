@@ -72,6 +72,12 @@ h1 {
   font-size: rem-calc(13);
 }
 
+
+// taken off for testing
+.profiler-results.profiler-left {
+  display: none;
+}
+
 .family-panel {
   margin-bottom: 10px !important;
 }

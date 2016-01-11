@@ -1,6 +1,3 @@
-
-<!-- need to add policy. If current user doesn't have role of admin, then the scope is just the current users personal family/families. If the current user is an admin, then all families are displayed alphabetically by last name -->
-
 <div class="row">
   <h1>Families of <%= current_user.name %></h1>
   <% @families.each do |family| %>
@@ -41,3 +38,7 @@
   <h3>Step Four</h3>
   <p>If you have completed your family and decendents - Congratulations! You are all done! You can <%= link_to "log out", sign_out_path %>, or edit your family above. Remember all changes must be made by Friday, January 15th.</p>
 </div>
+
+<% if current_user.has_role?(:admin) %>
+  cake
+<% end %>

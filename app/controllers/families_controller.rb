@@ -3,6 +3,7 @@ class FamiliesController < ApplicationController
 
   def index
     families
+    all_families
   end
 
   def new
@@ -39,11 +40,15 @@ class FamiliesController < ApplicationController
   private
 
   def families
+    @families ||= current_user.families
+  end
+
+    def all_families
     if current_user.has_role?(:admin)
-      @families = Family.all
+      @all_families = Family.all
       # but listed in order by user_id user last name
     else
-      @families ||= current_user.families
+      @all_families ||= nil
     end
   end
 
