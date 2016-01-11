@@ -17,14 +17,13 @@
       <ul class="off-canvas-list">
         <li><label>Wavetronix Family Survey</label></li>
           <li>
-            <%= link_to nil do %>
-              Reports
-            <% end %>
+            <%= link_to "Reports", nil %>
           </li>
           <li>
-            <%= link_to nil do %>
-              Families
-            <% end %>
+            <%= link_to "Families", nil %>
+          </li>
+          <li>
+            <%= link_to "Users", users_path %>
           </li>
         <li class="hide-for-medium-up">
           <%= link_to sign_out_path do %>
