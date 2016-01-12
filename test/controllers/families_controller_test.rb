@@ -8,7 +8,7 @@ describe FamiliesController do
     sign_in user
   end
 
-  describe "with an unauthorized user" do
+  describe "with a user" do
     it "gets index" do
       get :index
       must_respond_with :success

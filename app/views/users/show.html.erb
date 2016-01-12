@@ -1,0 +1,32 @@
+<% content_for :title, "#{@user.name}'s Family" %>
+
+<h1><%= @user.name %>'s Family</h1>
+<h3><%= pluralize(@user.families.count, "family") %> with <%= @user.families.all.map(&:total_family_members).sum %> people</b></p>
+
+<% @user.families.each do |family| %>
+  <div class="row panel family-panel">
+    <div class="medium-8 columns">
+      <h3><%= family.family_name %> Family</h3>
+      <p>On August 1st, the <%= family.family_name %> family will have a total of <%= pluralize(family.total_family_members, "member") %>.</p>
+      <p><% if family.members_under2 && family.members_under2 > 0 %>
+        Family members 2 and under = <%= family.members_under2 %><br/>
+      <% end %>
+      <% if family.members_2to5 && family.members_2to5 > 0 %>
+        Family members 2 to 5 = <%= family.members_2to5 %><br/>
+      <% end %>
+      <% if family.members_6to12 && family.members_6to12 > 0 %>
+        Family members 6 to 12 = <%= family.members_6to12 %><br/>
+      <% end %>
+      <% if family.members_13to17 && family.members_13to17 > 0 %>
+        Family members 13 to 17 = <%= family.members_13to17 %><br/>
+      <% end %>
+      <% if family.members_over18 && family.members_over18 > 0 %>
+        Family members 18 and over = <%= family.members_over18 %></p>
+      <% end %>
+    </div>
+    <div class="medium-4 text-right columns">
+      <%= button_to "Edit the #{family.family_name} family", edit_family_path(family), class: "button radius", method: :get %>
+      <%= button_to "Delete the #{family.family_name} family", family_path(family), class: "button radius alert tiny", data: { confirm: %(Are you sure you wnt to delete the "#{family.family_name}?" This cannot be undone.) }, method: :delete %>
+    </div>
+  </div>
+<% end %>

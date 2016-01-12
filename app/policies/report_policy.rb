@@ -3,8 +3,4 @@ class ReportPolicy < ApplicationPolicy
     user && user.has_role?(:admin)
   end
 
-  def show?
-    user && user.has_role?(:admin)
-  end
-
 end

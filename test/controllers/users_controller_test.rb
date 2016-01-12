@@ -17,6 +17,11 @@ describe UsersController do
       must_respond_with :success
     end
 
+    it "gets show" do
+      get :show, id: user
+      must_respond_with :success
+    end
+
     it "gets edit" do
       get :edit, id: user
       must_respond_with :success
@@ -43,6 +48,11 @@ describe UsersController do
     it "doesn't get index" do
       get :index
       must_respond_with :redirect
+    end
+
+    it "doesn't get other user show" do
+      get :show, id: user
+      must_respond_with :success
     end
 
     it "gets edit if user" do
