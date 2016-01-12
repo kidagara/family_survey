@@ -1,0 +1,69 @@
+<div class="row">
+  <div class="medium-6 columns">
+    <h1>All Families</h1>
+    <h3>Totals</h3>
+    <p><b><%= pluralize(@families.count, "family") %></b></p>
+    <p><b><%= pluralize(@families.sum(:members_under2), "member") %></b> under 2 years old.</p>
+    <p><b><%= pluralize(@families.sum(:members_2to5), "member") %></b> between 2 and 5 years old.</p>
+    <p><b><%= pluralize(@families.sum(:members_6to12), "member") %></b> between 6 and 12 years old.</p>
+    <p><b><%= pluralize(@families.sum(:members_13to17), "member") %></b> between 13 and 17 years old.</p>
+    <p><b><%= pluralize(@families.sum(:members_over18), "member") %></b> over 18 years old.</p>
+
+    <% @families.each do |family| %>
+      <div class="row panel family-panel">
+        <h3><%= family.family_name %> Family <small>(Family of <%= family.user.name %>)</small></h3>
+        <p>On August 1st, the <%= family.family_name %> family will have a total of <b><%= pluralize(family.total_family_members, "member") %></b>.</p>
+        <% if family.members_under2 && family.members_under2 > 0 %>
+          <b><%= pluralize(family.members_under2, "member") %></b> under 2 years old.<br/>
+        <% end %>
+        <% if family.members_2to5 && family.members_2to5 > 0 %>
+          <b><%= pluralize(family.members_2to5, "member") %></b> between 2 and 5 years old.<br/>
+        <% end %>
+        <% if family.members_6to12 && family.members_6to12 > 0 %>
+          <b><%= pluralize(family.members_6to12, "member") %></b> between 6 and 12 years old.<br/>
+        <% end %>
+        <% if family.members_13to17 && family.members_13to17 > 0 %>
+          <b><%= pluralize(family.members_13to17, "member") %></b> between 13 and 17 years old.<br/>
+        <% end %>
+        <% if family.members_over18 && family.members_over18 > 0 %>
+          <b><%= pluralize(family.members_over18, "member") %></b> over 18 years old.</p>
+        <% end %>
+        <p></p>
+        <ul class="button-group even-2">
+          <li>
+            <%= button_to "Edit Family", edit_family_path(family), class: "button primary", method: :get %>
+          </li>
+          <li>
+            <%= button_to "Delete family", family_path(family), class: "button alert", data: { confirm: %(Are you sure you wnt to delete the "#{family.family_name}?" This cannot be undone.) }, method: :delete %>
+          </li>
+        </ul>
+      </div>
+    <% end %>
+  </div>
+  <div class="medium-6 columns">
+    <h1>Employees signed up</h1>
+    <h3>Totals</h3>
+    <p><b><%= @users.count %> employees</b> have signed up.</p>
+    <p><b><%= @families.all.map(&:total_family_members).sum %> people</b> are accounted for.</p>
+    <table width="100%">
+      <thead>
+        <tr>
+          <th>Employee</th>
+          <th>Families</th>
+          <th>Total Family Members</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @users.each do |user| %>
+          <tr>
+            <td>
+              <strong><%= user.last_name %>, <%= user.first_name %></strong>
+            </td>
+            <td class="text-center"><%= user.families.count %></td>
+            <td class="text-center"><%= user.families.all.map(&:total_family_members).sum %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
