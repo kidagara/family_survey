@@ -15,5 +15,4 @@ class Family < ActiveRecord::Base
     total += members_over18 if members_over18
     return total
   end
-
 end

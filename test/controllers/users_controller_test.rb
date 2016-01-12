@@ -45,9 +45,9 @@ describe UsersController do
       must_respond_with :redirect
     end
 
-    it "doesn't get edit" do
+    it "gets edit if user" do
       get :edit, id: user
-      must_respond_with :redirect
+      must_respond_with :success
     end
 
     it "doesn't update a user" do
