@@ -31,12 +31,13 @@
         <p></p>
         <ul class="button-group even-2">
           <li>
-            <%= button_to "Edit Family", edit_family_path(family), class: "button primary", method: :get %>
+            <%= button_to "Edit Family", edit_family_path(family), class: "button", method: :get %>
           </li>
           <li>
             <%= button_to "Delete family", family_path(family), class: "button alert", data: { confirm: %(Are you sure you wnt to delete the "#{family.family_name}?" This cannot be undone.) }, method: :delete %>
           </li>
         </ul>
+          <%= button_to "See all families of #{family.user.name}", user_path(family.user), class: "button expand info", method: :get %>
       </div>
     <% end %>
   </div>
@@ -59,7 +60,9 @@
             <td>
               <strong><%= user.last_name %>, <%= user.first_name %></strong>
             </td>
-            <td class="text-center"><%= user.families.count %></td>
+            <td class="text-center">
+              <%= link_to "#{user.families.count}",user_path(user) %>
+            </td>
             <td class="text-center"><%= user.families.all.map(&:total_family_members).sum %></td>
           </tr>
         <% end %>

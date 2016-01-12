@@ -4,7 +4,7 @@
     <div class="row panel family-panel">
       <div class="medium-8 columns">
         <h3><%= family.family_name %> Family</h3>
-        <p>On August 2nd, the <%= family.family_name %> family will have a total of <%= pluralize(family.total_family_members, "member") %>.</p>
+        <p>On August 1st, the <%= family.family_name %> family will have a total of <%= pluralize(family.total_family_members, "member") %>.</p>
         <% if family.members_under2 && family.members_under2 > 0 %>
           Family members 2 and under = <%= family.members_under2 %><br/>
         <% end %>

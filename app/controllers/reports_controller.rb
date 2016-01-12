@@ -7,9 +7,6 @@ class ReportsController < ApplicationController
     authorize :report
   end
 
-  def show
-  end
-
   private
 
   def find_family
